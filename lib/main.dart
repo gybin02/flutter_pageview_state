@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpagestate/page/page_automatic_keep.dart';
+import 'package:flutterpagestate/page/page_default.dart';
+import 'package:flutterpagestate/page/page_index_stack.dart';
+import 'package:flutterpagestate/page/page_page_storage.dart';
+
+import 'mock.dart';
 
 void main() => runApp(MyApp());
 
@@ -91,13 +97,13 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            buildRaisedButton(context, "PageView 默认行为", PageDefault()),
+            buildRaisedButton(
+                context, "PageView automatic keep 保存状态", PageAutoKeep()),
+            buildRaisedButton(
+                context, "Page IndexStack 保存状态", PageIndexStatck()),
+            buildRaisedButton(context, "PageView 使用 PageStorageKey 保存状态",
+                PagePageStorageKey()),
           ],
         ),
       ),
