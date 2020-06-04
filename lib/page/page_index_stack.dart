@@ -30,7 +30,7 @@ class _PageIndexStatckState extends State<PageIndexStatck> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('appbarTitle'),
+          title: Text('Page IndexStack 保存状态'),
         ),
         body: Column(
           children: <Widget>[

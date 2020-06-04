@@ -27,7 +27,7 @@ class _PageDefaultState extends State<PageDefault> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('appbarTitle'),
+          title: Text('PageView 默认行为'),
         ),
         body: Column(
           children: <Widget>[
@@ -47,8 +47,8 @@ class _PageDefaultState extends State<PageDefault> {
               child: PageView(
                 controller: pageController,
                 children: <Widget>[
-                  PageOne(),
-                  PageOne(),
+                  PageOne(title: "One",),
+                  PageOne(title: "two",),
                 ],
               ),
             ),
@@ -58,6 +58,10 @@ class _PageDefaultState extends State<PageDefault> {
 }
 
 class PageOne extends StatefulWidget {
+  final String title;
+
+  PageOne({Key key, this.title}) : super(key: key);
+
   @override
   _PageOneState createState() => _PageOneState();
 }
@@ -69,7 +73,7 @@ class _PageOneState extends State<PageOne> {
   void initState() {
     super.initState();
     for (int i = 0; i < 100; i++) {
-      dataList.add("title $i");
+      dataList.add(" ${widget.title} : line  $i");
     }
   }
 

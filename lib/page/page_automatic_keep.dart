@@ -28,7 +28,7 @@ class _PageAutoKeepState extends State<PageAutoKeep> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('appbarTitle'),
+          title: Text('PageView automatic keep 保存状态'),
         ),
         body: Column(
           children: <Widget>[

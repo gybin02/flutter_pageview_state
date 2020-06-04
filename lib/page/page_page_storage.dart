@@ -15,6 +15,7 @@ class _PagePageStorageKeyState extends State<PagePageStorageKey> {
   @override
   void initState() {
     super.initState();
+    pageController = PageController(initialPage: 0);
   }
 
   @override
@@ -26,7 +27,7 @@ class _PagePageStorageKeyState extends State<PagePageStorageKey> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('appbarTitle'),
+          title: Text('PageView 使用 PageStorageKey 保存状态'),
         ),
         body: Column(
           children: <Widget>[
@@ -50,10 +51,14 @@ class _PagePageStorageKeyState extends State<PagePageStorageKey> {
                     key: PageStorageKey<String>("one"),
                     title: "page one",
                   ),
-                  PageOne(
-                    key: PageStorageKey<String>("two"),
-                    title: "page two",
-                  ),
+                  Center(
+                    child: Text("Page Two"),
+                  )
+                  //这里不能再使用PageOne了，因为两个是同一个state
+//                  PageOne(
+//                    key: PageStorageKey<String>("two"),
+//                    title: "page two",
+//                  ),
                 ],
               ),
             ),
@@ -77,9 +82,29 @@ class _PageOneState extends State<PageOne> {
   @override
   void initState() {
     super.initState();
+    //切换页面，会重新执行
+    log("initState");
     for (int i = 0; i < 100; i++) {
       dataList.add("title $i");
     }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    log("didChangeDependencies");
+  }
+
+  @override
+  void didUpdateWidget(PageOne oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    log("disUpdateWIdget ");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    log("dispose");
   }
 
   @override
